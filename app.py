@@ -54,12 +54,9 @@ async def start_handler(client: Client, message: Message):
             "plugins.always_open_pdf_externally": True
         })
 
-        chromedriver_path = os.getenv("CHROMEDRIVER_PATH", "/usr/local/bin/chromedriver")
+        chromedriver_path = os.getenv("CHROMEDRIVER_PATH", "./chromedriver/chromedriver")
+driver = webdriver.Chrome(service=Service(chromedriver_path), options=chrome_options)
 
-        driver = webdriver.Chrome(
-            service=Service(chromedriver_path),
-            options=chrome_options
-        )
 
         # JNVU रिजल्ट पेज पर जाएं (यह लिंक आपके कोड के अनुसार है, इसे अपडेट करें अगर ज़रूरत हो)
         driver.get("https://share.google/RiGoUdAWQEkczypqg")
